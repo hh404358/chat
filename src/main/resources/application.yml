@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+
+# MyBatis配置
+mybatis-plus:
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.hahaha.platform
+  typeEnumsPackage: com.hahaha.platform
+  configuration:
+    defaultEnumTypeHandler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    mapUnderscoreToCamelCase: true
+    #日志打印
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cacheEnabled: true
+  global-config:
+    # 是否打印启动时的横幅
+    banner: false
+    dbConfig:
+      #逻辑删除
+      logicDeleteValue: "null" # 逻辑已删除值(默认为 1)
+      logicNotDeleteValue: 0 # 逻辑未删除值(默认为 0)
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  # 合理化分页
+  reasonable: false
+  # PageHelper是否支持通过Mapper接口方法的参数来传递分页参数。
+  supportMethodsArguments: true
+  # 将count参数映射为countSql。
+  params: count=countSql
